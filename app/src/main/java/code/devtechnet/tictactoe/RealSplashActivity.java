@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ ImageView strt;
             @Override
             public void onClick(View view) {
                 startActivity(new Intent( RealSplashActivity.this,CreateAccountActivity.class));
+                finish();
             }
         });
     }

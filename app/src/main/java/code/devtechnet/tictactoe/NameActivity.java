@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import android.content.Intent;
 import android.os.Build;

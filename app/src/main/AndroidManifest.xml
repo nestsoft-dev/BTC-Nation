@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="code.nationfb.tictactoe">
+    package="code.devtechnet.tictactoe">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".IntroSplashActivity"
+            android:name="code.devtechnet.tictactoe.IntroSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,42 +26,42 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".WithdrawalActivity"
+            android:name="code.devtechnet.tictactoe.WithdrawalActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="code.devtechnet.tictactoe.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateAccountActivity"
+            android:name="code.devtechnet.tictactoe.CreateAccountActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RealHomeActivity"
+            android:name="code.devtechnet.tictactoe.RealHomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RealSplashActivity"
+            android:name="code.devtechnet.tictactoe.RealSplashActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="code.devtechnet.tictactoe.SplashActivity"
             android:screenOrientation="portrait"
             android:exported="true">
 
@@ -71,22 +71,22 @@
             android:value="ca-app-pub-1729154654721338~9180634958" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="code.devtechnet.tictactoe.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TwoNameActivity"
+            android:name="code.devtechnet.tictactoe.TwoNameActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".NameActivity"
+            android:name="code.devtechnet.tictactoe.NameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="code.devtechnet.tictactoe.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChooseActivity"
+            android:name="code.devtechnet.tictactoe.ChooseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SceneActivity"
+            android:name="code.devtechnet.tictactoe.SceneActivity"
             android:screenOrientation="portrait" />
     </application>
 

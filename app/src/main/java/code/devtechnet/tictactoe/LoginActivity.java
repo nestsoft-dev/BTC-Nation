@@ -1,8 +1,9 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference database;
     FirebaseUser user;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginBtn);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Logining....");
+        progressDialog.setTitle("Loading");
 
         loginBtn.setOnClickListener(view -> {
             String email = loginEmail.getText().toString();
@@ -51,13 +57,17 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || pass.isEmpty()){
                 Toast.makeText(this, "Fill the missing filed", Toast.LENGTH_LONG).show();
             }else{
+                progressDialog.show();
 
                 auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            progressDialog.dismiss();
                             startActivity(new Intent(LoginActivity.this,RealHomeActivity.class));
+                            finish();
                         }else{
+                            progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     }

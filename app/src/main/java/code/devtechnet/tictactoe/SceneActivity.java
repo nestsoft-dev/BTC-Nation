@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import android.app.Dialog;
 import android.content.Context;

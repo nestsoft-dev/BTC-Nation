@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class CreateAccountActivity extends AppCompatActivity {
     EditText createAcctName,createEmail,createPassword;

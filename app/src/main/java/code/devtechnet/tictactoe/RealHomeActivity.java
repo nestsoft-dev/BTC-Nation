@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

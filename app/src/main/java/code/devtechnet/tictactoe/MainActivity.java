@@ -1,10 +1,15 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,11 +17,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -26,6 +33,18 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Objects;
 //import com.google.firebase.analytics.FirebaseAnalytics;
 
 
@@ -41,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
 
+    FirebaseUser user;
+    FirebaseAuth auth;
+    DatabaseReference reference;
+    double Amount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +78,31 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Amount = Double.parseDouble(snapshot.child("MyMoney").getValue().toString());
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "error "+error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateDataBase();
+            }
+        },10000);
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -150,6 +199,81 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void updateDataBase() {
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Users").child(user.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        double satoshi = Double.parseDouble(Objects.requireNonNull(snapshot.child("MyMoney").getValue()).toString());
+                        //Todo add random value
+                        // Integer.parseInt(satoshi);
+
+                        double coins = satoshi + 25;
+
+
+
+                        Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.wallet,null);
+                        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+                        Bitmap largeIcon = bitmapDrawable.getBitmap();
+                        Notification notification;
+                        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                            notification = new Notification.Builder(MainActivity.this)
+                                    .setLargeIcon(largeIcon)
+                                    .setSmallIcon(R.drawable.wallet)
+                                    .setSubText("You have Earned")
+                                    .setContentText("You Earned 32points")
+                                    .setChannelId("CHANNEL_ID")
+                                    .build();
+
+                            nm.createNotificationChannel(new NotificationChannel("CHANNEL_ID", "New Channel",NotificationManager.IMPORTANCE_HIGH));
+                        }else {
+
+                            notification = new Notification.Builder(MainActivity.this)
+                                    .setLargeIcon(largeIcon)
+                                    .setSmallIcon(R.drawable.wallet)
+                                    .setSubText("You have Earned")
+                                    .setContentText("You Earned 32points")
+                                    .build();
+
+                        }
+                        nm.notify(120,notification);
+
+
+
+                        //double updatesatoshi = Double.parseDouble(coins + updateAmount);
+
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("MyMoney", coins);
+
+                        databaseReference.child("Users").child(user.getUid())
+                                .updateChildren(map);
+                        //  Appodeal.show(EarnActivity.this, Appodeal.INTERSTITIAL);
+
+                        // progressDialog.dismiss();
+                        //TODO display alert dialogue
+
+
+
+
+                        Calendar calendar = Calendar.getInstance();
+                        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
 

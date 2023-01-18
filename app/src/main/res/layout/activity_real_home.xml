@@ -69,11 +69,30 @@
                </LinearLayout>
            </androidx.cardview.widget.CardView>
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="180dp">
+<!--            <HorizontalScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="180dp">-->
 
-            </HorizontalScrollView>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="250dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:src="@drawable/first" />-->
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:src="@drawable/first"
+
+                        android:layout_gravity="center"
+                        />
+<!--                </LinearLayout>-->
+<!--            </HorizontalScrollView>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

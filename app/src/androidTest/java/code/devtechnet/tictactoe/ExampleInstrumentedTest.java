@@ -1,4 +1,4 @@
-package code.nationfb.tictactoe;
+package code.devtechnet.tictactoe;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
