@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".WithdrawalActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:text="Withdrawal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/squre"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/background_tint"
+        app:cardElevation="3dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_tint"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:layout_marginTop="10dp"
+                android:text="Hi,Ikenna"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/squre"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:text="Available Balance"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginStart="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:layout_marginTop="10dp"
+                android:text="2501"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="25dp"
+                android:layout_marginStart="15dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dark_grey_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edittext_background"
+            android:drawableLeft="@drawable/wallet"
+            android:drawablePadding="16dp"
+
+            android:gravity="left"
+            android:hint="Enter Wallet"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="#BDBABA" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_bg"
+            android:text="Withdraw"
+            android:textColor="#FFBD0E" />
+
+    </LinearLayout>
+
+</LinearLayout>

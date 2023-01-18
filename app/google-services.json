@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "893163227740",
+    "project_id": "btcg-a4dba",
+    "storage_bucket": "btcg-a4dba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893163227740:android:379daae8ac975d20fc3499",
+        "android_client_info": {
+          "package_name": "code.nationfb.tictactoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893163227740-63b7r49gm5tr6mina6g17fb3askeklfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0UjtGJUnHGViVjfkfnV5BrMRAs95GCYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893163227740-63b7r49gm5tr6mina6g17fb3askeklfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
